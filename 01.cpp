@@ -1,23 +1,23 @@
 #include <iostream>
 using namespace std;
 
-struct varun          // node created
+struct akil     // node created
 {
 	int data;
-	varun *next;
-	varun()
+	akil *next;
+	akil()
 	{
 		data = 0;
 		next = NULL;
 	}
 };
 
-class kanna          // class declaration
+class varun     // class declaration
 {
 private:
-	varun *head, *tail;
+	akil *head, *tail;
 public:
-	kanna()          // constructor
+	varun()          // constructor
 	{
 		head = NULL;
 		tail = NULL;
@@ -26,7 +26,7 @@ public:
 	
 	void insert(int n)     // function to insert a node at the end of the list
 	{
-		varun *temp = new varun;
+		akil*temp = new akil;
 		temp->data = n;
 		temp->next = NULL;
 		if (head == NULL) 
@@ -42,8 +42,8 @@ public:
 	
 	void insertAt(int pos, int value)  // function to insert a node anywhere in the list
 	{
-		varun *previous,*current;
-		varun *temp = new varun;
+		akil *previous,*current;
+		akil *temp = new akil;
 		current = head;
 		int a=countItems();
 		if(pos>a+1)
@@ -63,7 +63,7 @@ public:
 	
 	void display()    // function to display nodes
 	{
-		varun *temp = new varun;
+		akil *temp = new akil;
 		temp = head;
 		while (temp != NULL) 
 		{
@@ -76,7 +76,7 @@ public:
 	
 	void deleteNode()  // function to delete node at the end
 	{
-		varun *previous, *current;
+		akil *previous, *current;
 		previous=NULL;
 		current = head;
 		while(current->next != NULL) 
@@ -90,7 +90,7 @@ public:
 	
 	void deleteAt(int pos) // function to delete node at a specified position
 	{
-		varun *previous, *current;
+		akil *previous, *current;
 		current = head;
 		for (int i = 1; i < pos; i++) 
 		{
@@ -102,7 +102,7 @@ public:
 	
 	int countItems()     //function to count items
 	{
-		varun *current;
+		akil *current;
 		current = head;
 		int a=0;
 		while(current->next!=NULL)
@@ -117,7 +117,7 @@ public:
 
 int main()
 {
-	kanna a;
+	varun a;
 	a.insert(4);
 	a.insert(6);
 	a.insert(7);
