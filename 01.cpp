@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-struct akil     // node created
+struct akil     // node is created
 {
 	int data;
 	akil *next;
