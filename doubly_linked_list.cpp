@@ -14,12 +14,12 @@ struct varun          // node created
 	}
 };
 
-class kanna          // class declaration
+class akil       // class declaration
 {
 private:
 	varun *head, *tail;
 public:
-	kanna()          // constructor
+	akil()          // constructor
 	{
 		head = NULL;
 		tail = NULL;
@@ -125,7 +125,7 @@ void deleteNode()  // function to delete node at the end
 
 int main()
 {
-	kanna a;
+	akil a;
 	a.insert(4);
 	a.insert(6);
 	a.insert(7);
