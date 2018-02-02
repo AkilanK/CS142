@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
 
-//Constructing a node
+//node is constructed
 struct node{
 	int data;
 	node *next;
 };
 
-//Defining a stack
+//stack is defined
 class stack{
 private:
 	node *head;
