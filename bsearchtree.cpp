@@ -1,9 +1,10 @@
 #include<iostream>
 using namespace std;
-
+int p=0;
 class node{
 public:
 int data;
+
 node*parent;
 node*left;
 node*right;
@@ -66,16 +67,21 @@ void display(node*temp)
 	    display(temp->right);
 	    
 	}
-int search(node*temp,int key)
+node* search(node*temp,int key)
 {
-if (temp!=NULL)
-{
-search(temp->left,key);
-if(temp->data==key)
-{return key-1;
-}
-search(temp->right,key);
-}
+if(temp!=NULL)
+		{
+        if(temp->data==key)
+        return temp;
+        else if(temp->data > key)
+        return search(temp->left,key);
+		else
+		return search(temp->right,key);
+	    }
+	    else
+	    {
+	    return NULL;
+	    }
 }
 void deletenode(node*current)
 {
@@ -89,11 +95,14 @@ else if(current->left==NULL)
 {if(current->parent->left=current)
    {current->parent->left=current->right;}
 else current->parent->right=current->right;
+current->right->parent=current->parent;
 }
 else if(current->right==NULL)
 {if(current->parent->left=current)
-   {current->parent->left=current->left;}
+   {current->parent->left=current->left;
+}
 else current->parent->right=current->left;
+current->left->parent=current->parent;
 }
 
 else{
@@ -108,18 +117,53 @@ p->right=current->right;
 {if(current->parent->left=current)
    {current->parent->left=p;}
 else current->parent->right=p;
+current->left->parent=p;
+current->right->parent=p;
 }
 }
 else
-{p->left->parent=p->parent;
+{if(current->parent!=NULL){
+current->left->parent=p;
+current->right->parent=p;
+p->left->parent=p->parent;
 p->parent->right=p->left;
+
+p->parent=current->parent;
+
+p->left=current->left;
+p->right=current->right;
+if(current->parent->left=current)
+   {current->parent->left=p;}
+else current->parent->right=p;
+
 }
+
+else
+
+{root=p;
+current->left->parent=p;
+current->right->parent=p;
+p->left->parent=p->parent;
+p->parent->right=p->left;
+p->left=current->left;
+p->right=current->right;
+
+}
+}
+}
+}
+void countnode(node*temp){
+if(temp==NULL)
+                return;                                                                                                                                
+                countnode(temp->left);
+                                p++;
+               countnode(temp->right);
+
 }
 
 
-
-}
 };
+
 int main(){
 Btree a;
 a.insert(5);
@@ -133,12 +177,13 @@ a.display(a.root);
 cout<<"Enter the element to search";
 int s;
 cin>>s;
-if(s==a.search(a.root,s)+1)
-{cout<<"the element is found"<<endl;}
-else
+ if(a.search(a.root,s)==NULL)
 {cout<<"the element is not found"<<endl;}
+else cout<<"the element is found"<<endl;
 a.deletenode(a.root);
 a.display(a.root);
+a.countnode(a.root);
+cout<<"the total number of nodes="<<p;
 }
 
 
