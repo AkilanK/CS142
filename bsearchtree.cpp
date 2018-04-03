@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 int p=0;
+int q=0;
+int r=0;
 class node{
 public:
 int data;
@@ -160,8 +162,23 @@ if(temp==NULL)
                countnode(temp->right);
 
 }
+void countintnode(node*temp){
+if(temp==NULL)
+return;
+countintnode(temp->left);
+if(temp->left!=NULL || temp->right!=NULL)
+{q++;}
+countintnode(temp->right);
 
-
+}
+void countleaf(node*temp){
+if(temp==NULL)
+return;
+countleaf(temp->left);
+if(temp->left==NULL && temp->right==NULL)
+r++;
+countleaf(temp->right);
+}
 };
 
 int main(){
@@ -183,7 +200,12 @@ else cout<<"the element is found"<<endl;
 a.deletenode(a.root);
 a.display(a.root);
 a.countnode(a.root);
-cout<<"the total number of nodes="<<p;
+a.countintnode(a.root);
+a.countleaf(a.root);
+
+cout<<"the total number of nodes="<<p<<endl;
+cout<<"the total number of internal nodes="<<q<<endl;
+cout<<"the total number of leaf nodes="<<r<<endl;
 }
 
 
