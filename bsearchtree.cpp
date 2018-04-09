@@ -3,6 +3,8 @@ using namespace std;
 int p=0;
 int q=0;
 int r=0;
+int u;
+int l;
 class node{
 public:
 int data;
@@ -119,6 +121,7 @@ p->right=current->right;
 {if(current->parent->left=current)
    {current->parent->left=p;}
 else current->parent->right=p;
+
 current->left->parent=p;
 current->right->parent=p;
 }
@@ -179,6 +182,15 @@ if(temp->left==NULL && temp->right==NULL)
 r++;
 countleaf(temp->right);
 }
+	void rangesearch(node*temp,int u,int l)
+{if(temp==NULL)
+    return;
+    rangesearch(temp->left,u,l);
+    if(temp->data<=u && temp->data>=l)
+    cout<<temp->data<<endl;
+    rangesearch(temp->right,u,l);
+    
+}
 };
 
 int main(){
@@ -206,6 +218,11 @@ a.countleaf(a.root);
 cout<<"the total number of nodes="<<p<<endl;
 cout<<"the total number of internal nodes="<<q<<endl;
 cout<<"the total number of leaf nodes="<<r<<endl;
+	cout<<"enter the upper limit for range search";
+	cin>>u;
+	cout<<"enter the lower limit for range search";
+	cin>>l;
+	a.rangesearch(a.root,u,l);
 }
 
 
